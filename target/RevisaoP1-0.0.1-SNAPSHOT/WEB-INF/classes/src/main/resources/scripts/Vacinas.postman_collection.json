@@ -1,0 +1,408 @@
+{
+	"info": {
+		"_postman_id": "07f9382d-5677-45d8-85b8-b2a347f7c5e5",
+		"name": "Senac - Vacinas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5303656"
+	},
+	"item": [
+		{
+			"name": "[Vacina] Inserir",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"SenacVac\",\r\n    \"paisOrigem\": \"Brasil\",\r\n    \"estagio\": 1,\r\n    \"dataInicioPesquisa\": \"2022-10-10\",\r\n    \"pesquisadorResponsavel\": {\r\n        \"id\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/vacina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"vacina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Vacina] Atualizar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"nome\": \"GarrinchaVac\",\r\n    \"paisOrigem\": \"Brasil\",\r\n    \"estagio\": 3,\r\n    \"dataInicioPesquisa\": \"2018-10-10\",\r\n    \"pesquisadorResponsavel\": {\r\n        \"id\": 2\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/vacina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"vacina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Vacina] Excluir",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"paisOrigem\": \"Portugal\",\r\n    \"estagioPesquisa\": 3,\r\n    \"dataInicioPesquisa\": \"2022-10-10\",\r\n    \"responsavel\": {\r\n        \"id\": 1,\r\n        \"nome\": \"Edson Arantes do Nascimento\",\r\n        \"cpf\": \"00011122210\",\r\n        \"matricula\": 10,\r\n        \"dataNascimento\": \"1940-03-21\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/vacina/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"vacina",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Vacina] Listar todas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/vacina/todas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"vacina",
+						"todas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Vacina] Consultar por id responsável",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/vacina/responsavel/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"vacina",
+						"responsavel",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Vacina] Consultar por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/vacina/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"vacina",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Pessoa] Inserir",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cpf\": \"01022201080\",\r\n    \"dataNascimento\": \"1980-03-21\",\r\n    \"nome\": \"Ronaldo Assis Moreira\",\r\n    \"sexo\": \"M\",\r\n    \"tipo\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/pessoa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Pessoa] Atualizar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cpf\": \"01012301010\",\r\n    \"dataNascimento\": \"1940-10-23\",\r\n    \"id\": 1,\r\n    \"nome\": \"Edson Arantes do Nascimento (Pelé)\",\r\n    \"sexo\": \"M\",\r\n    \"tipo\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/pessoa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Pessoa] Excluir",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"paisOrigem\": \"Portugal\",\r\n    \"estagioPesquisa\": 3,\r\n    \"dataInicioPesquisa\": \"2022-10-10\",\r\n    \"responsavel\": {\r\n        \"id\": 1,\r\n        \"nome\": \"Edson Arantes do Nascimento\",\r\n        \"cpf\": \"00011122210\",\r\n        \"matricula\": 10,\r\n        \"dataNascimento\": \"1940-03-21\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/pessoa/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"pessoa",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Pessoa] Listar todas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/pessoa/todas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"pessoa",
+						"todas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Pessoa] Consultar por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/pessoa/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"pessoa",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Vacinacao] Inserir",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"vacina\": {\r\n        \"id\": 2 \r\n    },\r\n    \"dataAplicacao\": \"2024-03-20\",\r\n    \"avaliacao\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/vacinacao",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"vacinacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Vacinacao] Listar todas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/vacinacao/todas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"vacinacao",
+						"todas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Vacinacao] Listar por Pessoa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/vacinacao/pessoa/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"vacinacao",
+						"pessoa",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Pais] Inserir",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Tajiquistão\",\r\n    \"sigla\": \"TQ\"   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/senac-20241-backend-exemplos/rest/pais",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senac-20241-backend-exemplos",
+						"rest",
+						"pais"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

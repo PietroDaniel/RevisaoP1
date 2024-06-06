@@ -1,0 +1,327 @@
+DROP DATABASE IF EXISTS P1;
+CREATE DATABASE P1;
+USE P1;
+
+CREATE TABLE `pais` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `sigla` VARCHAR(2) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `pessoa` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(255) NOT NULL,
+  `cpf` VARCHAR(11) NOT NULL,
+  `sexo` VARCHAR(1) NOT NULL,
+  `data_nascimento` DATE NOT NULL,
+  `tipo` INT NOT NULL COMMENT '1- Pesquisador; 2- Voluntário; 3- Público Geral',
+  `id_pais` INT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `FK_pessoa_pais` FOREIGN KEY (`id_pais`) REFERENCES `pais`(`id`)
+);
+
+CREATE TABLE `vacina` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_pesquisador` INT NOT NULL,
+  `nome` VARCHAR(300) NOT NULL,
+  `pais_origem` VARCHAR(300) DEFAULT ("") NOT NULL ,
+  `estagio_pesquisa` INT NOT NULL COMMENT '1- Inicial; 2- Teste; 3- Aplicação em massa',
+  `data_inicio_pesquisa` DATE NOT NULL,
+  `id_pais` INT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `FK_vacina_pessoa` FOREIGN KEY (`id_pesquisador`) REFERENCES `pessoa`(`id`),
+  CONSTRAINT `FK_vacina_pais` FOREIGN KEY (`id_pais`) REFERENCES `pais`(`id`)
+);
+
+CREATE TABLE `aplicacao_vacina` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_pessoa` INT NOT NULL,
+  `id_vacina` INT NOT NULL,
+  `data_aplicacao` DATE NOT NULL,
+  `avaliacao` INT NOT NULL COMMENT 'Valor entre 1 e 5',
+  PRIMARY KEY (`id`),
+  CONSTRAINT `FK_aplicacao_pessoa` FOREIGN KEY (`id_pessoa`) 
+  REFERENCES `pessoa`(`id`),
+  CONSTRAINT `FK_aplicacao_vacina` FOREIGN KEY (`id_vacina`) 
+  REFERENCES `vacina`(`id`)
+);
+
+INSERT INTO pais (nome, sigla) VALUES
+('Afeganistão', 'AF'),
+('Albânia', 'AL'),
+('Argélia', 'DZ'),
+('Andorra', 'AD'),
+('Angola', 'AO'),
+('Antígua e Barbuda', 'AG'),
+('Argentina', 'AR'),
+('Armênia', 'AM'),
+('Austrália', 'AU'),
+('Áustria', 'AT'),
+('Azerbaijão', 'AZ'),
+('Bahamas', 'BS'),
+('Bahrein', 'BH'),
+('Bangladesh', 'BD'),
+('Barbados', 'BB'),
+('Bielorrússia', 'BY'),
+('Bélgica', 'BE'),
+('Belize', 'BZ'),
+('Benin', 'BJ'),
+('Butão', 'BT'),
+('Bolívia', 'BO'),
+('Bósnia e Herzegovina', 'BA'),
+('Botsuana', 'BW'),
+('Brasil', 'BR'),
+('Brunei', 'BN'),
+('Bulgária', 'BG'),
+('Burkina Faso', 'BF'),
+('Burundi', 'BI'),
+('Cabo Verde', 'CV'),
+('Camboja', 'KH'),
+('Camarões', 'CM'),
+('Canadá', 'CA'),
+('República Centro-Africana', 'CF'),
+('Chade', 'TD'),
+('Chile', 'CL'),
+('China', 'CN'),
+('Colômbia', 'CO'),
+('Comores', 'KM'),
+('República Democrática do Congo', 'CD'),
+('República do Congo', 'CG'),
+('Costa Rica', 'CR'),
+('Croácia', 'HR'),
+('Cuba', 'CU'),
+('Chipre', 'CY'),
+('República Tcheca', 'CZ'),
+('Dinamarca', 'DK'),
+('Djibuti', 'DJ'),
+('Dominica', 'DM'),
+('República Dominicana', 'DO'),
+('Timor-Leste', 'TL'),
+('Equador', 'EC'),
+('Egito', 'EG'),
+('El Salvador', 'SV'),
+('Guiné Equatorial', 'GQ'),
+('Eritreia', 'ER'),
+('Estônia', 'EE'),
+('Eswatini', 'SZ'),
+('Etiópia', 'ET'),
+('Fiji', 'FJ'),
+('Finlândia', 'FI'),
+('França', 'FR'),
+('Gabão', 'GA'),
+('Gâmbia', 'GM'),
+('Geórgia', 'GE'),
+('Alemanha', 'DE'),
+('Gana', 'GH'),
+('Grécia', 'GR'),
+('Granada', 'GD'),
+('Guatemala', 'GT'),
+('Guiné', 'GN'),
+('Guiné-Bissau', 'GW'),
+('Guiana', 'GY'),
+('Haiti', 'HT'),
+('Honduras', 'HN'),
+('Hungria', 'HU'),
+('Islândia', 'IS'),
+('Índia', 'IN'),
+('Indonésia', 'ID'),
+('Irã', 'IR'),
+('Iraque', 'IQ'),
+('Irlanda', 'IE'),
+('Israel', 'IL'),
+('Itália', 'IT'),
+('Costa do Marfim', 'CI'),
+('Jamaica', 'JM'),
+('Japão', 'JP'),
+('Jordânia', 'JO'),
+('Cazaquistão', 'KZ'),
+('Quênia', 'KE'),
+('Kiribati', 'KI'),
+('Coreia do Norte', 'KP'),
+('Coreia do Sul', 'KR'),
+('Kuwait', 'KW'),
+('Quirguistão', 'KG'),
+('Laos', 'LA'),
+('Letônia', 'LV'),
+('Líbano', 'LB'),
+('Lesoto', 'LS'),
+('Libéria', 'LR'),
+('Líbia', 'LY'),
+('Liechtenstein', 'LI'),
+('Lituânia', 'LT'),
+('Luxemburgo', 'LU'),
+('Madagascar', 'MG'),
+('Malaui', 'MW'),
+('Malásia', 'MY'),
+('Maldivas', 'MV'),
+('Mali', 'ML'),
+('Malta', 'MT'),
+('Ilhas Marshall', 'MH'),
+('Mauritânia', 'MR'),
+('Maurícia', 'MU'),
+('México', 'MX'),
+('Micronésia', 'FM'),
+('Moldávia', 'MD'),
+('Mônaco', 'MC'),
+('Mongólia', 'MN'),
+('Montenegro', 'ME'),
+('Marrocos', 'MA'),
+('Moçambique', 'MZ'),
+('Mianmar', 'MM'),
+('Namíbia', 'NA'),
+('Nauru', 'NR'),
+('Nepal', 'NP'),
+('Países Baixos', 'NL'),
+('Nova Zelândia', 'NZ'),
+('Nicarágua', 'NI'),
+('Níger', 'NE'),
+('Nigéria', 'NG'),
+('Niue', 'NU'),
+('Macedônia do Norte', 'MK'),
+('Noruega', 'NO'),
+('Omã', 'OM'),
+('Paquistão', 'PK'),
+('Palau', 'PW'),
+('Panamá', 'PA'),
+('Papua Nova Guiné', 'PG'),
+('Paraguai', 'PY'),
+('Peru', 'PE'),
+('Filipinas', 'PH'),
+('Polônia', 'PL'),
+('Portugal', 'PT'),
+('Catar', 'QA'),
+('Romênia', 'RO'),
+('Rússia', 'RU'),
+('Ruanda', 'RW'),
+('São Cristóvão e Nevis', 'KN'),
+('Santa Lúcia', 'LC'),
+('São Vicente e Granadinas', 'VC'),
+('Samoa', 'WS'),
+('San Marino', 'SM'),
+('São Tomé e Príncipe', 'ST'),
+('Arábia Saudita', 'SA'),
+('Senegal', 'SN'),
+('Sérvia', 'RS'),
+('Seychelles', 'SC'),
+('Serra Leoa', 'SL'),
+('Cingapura', 'SG'),
+('Eslováquia', 'SK'),
+('Eslovênia', 'SI'),
+('Ilhas Salomão', 'SB'),
+('Somália', 'SO'),
+('África do Sul', 'ZA'),
+('Sudão do Sul', 'SS'),
+('Espanha', 'ES'),
+('Sri Lanka', 'LK'),
+('Sudão', 'SD'),
+('Suriname', 'SR'),
+('Suécia', 'SE'),
+('Suíça', 'CH'),
+('Síria', 'SY'),
+('Tajiquistão', 'TJ'),
+('Tanzânia', 'TZ'),
+('Tailândia', 'TH'),
+('Togo', 'TG'),
+('Tonga', 'TO'),
+('Trinidad e Tobago', 'TT'),
+('Tunísia', 'TN'),
+('Turquia', 'TR'),
+('Turcomenistão', 'TM'),
+('Tuvalu', 'TV'),
+('Uganda', 'UG'),
+('Ucrânia', 'UA'),
+('Emirados Árabes Unidos', 'AE'),
+('Reino Unido', 'GB'),
+('Estados Unidos', 'US'),
+('Uruguai', 'UY'),
+('Uzbequistão', 'UZ'),
+('Vanuatu', 'VU'),
+('Cidade do Vaticano', 'VA'),
+('Venezuela', 'VE'),
+('Vietnã', 'VN'),
+('Iêmen', 'YE'),
+('Zâmbia', 'ZM'),
+('Zimbábue', 'ZW');
+
+
+INSERT INTO pessoa (nome, cpf, data_Nascimento, tipo, sexo, id_pais)
+VALUES('Marcos Evangelista de Morais', '2220002255', '1970-06-07', '2', 'M', (SELECT id FROM pais WHERE sigla = 'BR'));
+
+INSERT INTO pessoa (nome, cpf, data_Nascimento, tipo, sexo, id_pais)
+VALUES('Manoel Francisco dos Santos', '77711122277', '1933-10-28', '1', 'M', (SELECT id FROM pais WHERE sigla = 'BR'));
+
+INSERT INTO pessoa (nome, cpf, data_Nascimento, tipo, sexo, id_pais)
+VALUES('Edson Arantes do Nascimento', '01012301010', '1940-10-23', '1', 'M', (SELECT id FROM pais WHERE sigla = 'BR'));
+
+INSERT INTO vacina (nome, id_pesquisador, pais_origem, estagio_pesquisa, data_inicio_pesquisa)
+VALUES
+('Vacina X', (SELECT id FROM pessoa WHERE nome = 'Manoel Francisco dos Santos'), 'Brasil', 2, '2022-01-10'),
+('Vacina Y', (SELECT id FROM pessoa WHERE nome = 'Edson Arantes do Nascimento'), 'Brasil', 1, '2023-03-15');
+
+INSERT INTO aplicacao_vacina (id_pessoa, id_vacina, data_aplicacao, avaliacao)
+VALUES
+((SELECT id FROM pessoa WHERE nome = 'Marcos Evangelista de Morais'), (SELECT id FROM vacina WHERE nome = 'Vacina X'), '2023-04-20', 5),
+((SELECT id FROM pessoa WHERE nome = 'Marcos Evangelista de Morais'), (SELECT id FROM vacina WHERE nome = 'Vacina Y'), '2023-04-22', 4);
+
+INSERT INTO pessoa (nome, cpf, data_nascimento, tipo, sexo, id_pais)
+VALUES('Ana Maria Braga', '12345678901', '1949-04-01', 3, 'F', (SELECT id FROM pais WHERE sigla = 'BR'));
+
+SELECT * FROM `pessoa`;
+SELECT * FROM `vacina`;
+SELECT * FROM `aplicacao_vacina`;
+
+-- Inserções para a tabela vacina
+INSERT INTO vacina (nome, id_pesquisador, pais_origem, estagio_pesquisa, data_inicio_pesquisa)
+VALUES('Vacina E', (SELECT id FROM pessoa WHERE nome = 'João da Silva'), 'Brasil', 2, '2023-04-01');
+
+INSERT INTO vacina (nome, id_pesquisador, pais_origem, estagio_pesquisa, data_inicio_pesquisa)
+VALUES('Vacina F', (SELECT id FROM pessoa WHERE nome = 'Maria de Souza'), 'Brasil', 1, '2023-02-15');
+
+INSERT INTO vacina (nome, id_pesquisador, pais_origem, estagio_pesquisa, data_inicio_pesquisa)
+VALUES('Vacina G', (SELECT id FROM pessoa WHERE nome = 'Carlos Oliveira'), 'Brasil', 3, '2023-01-10');
+
+INSERT INTO vacina (nome, id_pesquisador, pais_origem, estagio_pesquisa, data_inicio_pesquisa)
+VALUES('Vacina H', (SELECT id FROM pessoa WHERE nome = 'Fernanda Lima'), 'Brasil', 1, '2023-05-05');
+
+
+ALTER TABLE vacina ADD COLUMN media DOUBLE DEFAULT 0;
+
+-- Inserções para a tabela pessoa
+INSERT INTO pessoa (nome, cpf, data_Nascimento, tipo, sexo, id_pais)
+VALUES('João da Silva', '12345678912', '1980-01-01', 1, 'M', (SELECT id FROM pais WHERE sigla = 'BR'));
+
+INSERT INTO pessoa (nome, cpf, data_Nascimento, tipo, sexo, id_pais)
+VALUES('Maria de Souza', '98765432100', '1975-05-15', 2, 'F', (SELECT id FROM pais WHERE sigla = 'BR'));
+
+INSERT INTO pessoa (nome, cpf, data_Nascimento, tipo, sexo, id_pais)
+VALUES('Carlos Oliveira', '11122233344', '1990-12-10', 3, 'M', (SELECT id FROM pais WHERE sigla = 'BR'));
+
+INSERT INTO pessoa (nome, cpf, data_Nascimento, tipo, sexo, id_pais)
+VALUES('Fernanda Lima', '55566677788', '1985-03-25', 1, 'F', (SELECT id FROM pais WHERE sigla = 'BR'));
+
+-- Inserções para a tabela vacina
+INSERT INTO vacina (nome, id_pesquisador, pais_origem, estagio_pesquisa, data_inicio_pesquisa)
+VALUES('Vacina A', (SELECT id FROM pessoa WHERE nome = 'João da Silva'), 'Brasil', 1, '2023-05-10');
+
+INSERT INTO vacina (nome, id_pesquisador, pais_origem, estagio_pesquisa, data_inicio_pesquisa)
+VALUES('Vacina B', (SELECT id FROM pessoa WHERE nome = 'Maria de Souza'), 'Brasil', 2, '2022-08-15');
+
+INSERT INTO vacina (nome, id_pesquisador, pais_origem, estagio_pesquisa, data_inicio_pesquisa)
+VALUES('Vacina C', (SELECT id FROM pessoa WHERE nome = 'Carlos Oliveira'), 'Brasil', 3, '2021-12-01');
+
+INSERT INTO vacina (nome, id_pesquisador, pais_origem, estagio_pesquisa, data_inicio_pesquisa)
+VALUES('Vacina D', (SELECT id FROM pessoa WHERE nome = 'Fernanda Lima'), 'Brasil', 1, '2023-03-20');
+
+-- Inserções para a tabela aplicacao_vacina
+INSERT INTO aplicacao_vacina (id_pessoa, id_vacina, data_aplicacao, avaliacao)
+VALUES((SELECT id FROM pessoa WHERE nome = 'João da Silva'), (SELECT id FROM vacina WHERE nome = 'Vacina A'), '2023-06-01', 5);
+
+INSERT INTO aplicacao_vacina (id_pessoa, id_vacina, data_aplicacao, avaliacao)
+VALUES((SELECT id FROM pessoa WHERE nome = 'Maria de Souza'), (SELECT id FROM vacina WHERE nome = 'Vacina B'), '2023-07-15', 4);
+
+INSERT INTO aplicacao_vacina (id_pessoa, id_vacina, data_aplicacao, avaliacao)
+VALUES((SELECT id FROM pessoa WHERE nome = 'Carlos Oliveira'), (SELECT id FROM vacina WHERE nome = 'Vacina C'), '2023-09-10', 3);
+
+INSERT INTO aplicacao_vacina (id_pessoa, id_vacina, data_aplicacao, avaliacao)
+VALUES((SELECT id FROM pessoa WHERE nome = 'Fernanda Lima'), (SELECT id FROM vacina WHERE nome = 'Vacina D'), '2023-11-20', 5);

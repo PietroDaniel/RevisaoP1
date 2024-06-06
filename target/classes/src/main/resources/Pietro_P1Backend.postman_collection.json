@@ -1,0 +1,429 @@
+{
+	"info": {
+		"_postman_id": "37fc2f23-ebd4-4e08-90e4-48f5006a50c6",
+		"name": "Prova Back - Vilmar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28786422"
+	},
+	"item": [
+		{
+			"name": "Vacina",
+			"item": [
+				{
+					"name": "Inserir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"SenacVac\",\r\n    \"paisOrigem\": {\r\n        \"id\" : 24\r\n    },\r\n    \"estagio\": 1,\r\n    \"dataInicioPesquisa\": \"2022-10-10\",\r\n    \"pesquisadorResponsavel\": {\r\n        \"id\": 1,\r\n        \"sexo\": \"M\",\r\n        \"tipo\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/vacina",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"vacina"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Vacina Z\",\r\n    \"paisOrigem\": {\r\n        \"id\" : 24\r\n    },\r\n    \"estagio\": 1,\r\n    \"dataInicioPesquisa\": \"2022-10-10\",\r\n    \"pesquisadorResponsavel\": {\r\n        \"id\": 1,\r\n        \"sexo\": \"M\",\r\n        \"tipo\": 2\r\n    },\r\n    \"id\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/vacina",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"vacina"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/vacina/todas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"vacina",
+								"todas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"paisOrigem\": \"Portugal\",\r\n    \"estagioPesquisa\": 3,\r\n    \"dataInicioPesquisa\": \"2022-10-10\",\r\n    \"responsavel\": {\r\n        \"id\": 1,\r\n        \"nome\": \"Edson Arantes do Nascimento\",\r\n        \"cpf\": \"00011122210\",\r\n        \"matricula\": 10,\r\n        \"dataNascimento\": \"1940-03-21\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/vacina/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"vacina",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar por id responsável",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/vacina/responsavel/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"vacina",
+								"responsavel",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/vacina/buscar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"vacina",
+								"buscar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pessoa",
+			"item": [
+				{
+					"name": "Inserir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"01022201080\",\r\n    \"dataNascimento\": \"1980-03-21\",\r\n    \"nome\": \"Ronaldo Assis Moreira\",\r\n    \"sexo\": \"M\",\r\n    \"tipo\": 3,\r\n    \"paisOrigem\" : {\r\n        \"id\": 24\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/pessoa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"01012301010\",\r\n    \"dataNascimento\": \"1940-10-23\",\r\n    \"id\": 1,\r\n    \"nome\": \"Edson Arantes do Nascimento (Pelé)\",\r\n    \"sexo\": \"M\",\r\n    \"tipo\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/pessoa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"pessoa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"paisOrigem\": \"Portugal\",\r\n    \"estagioPesquisa\": 3,\r\n    \"dataInicioPesquisa\": \"2022-10-10\",\r\n    \"responsavel\": {\r\n        \"id\": 1,\r\n        \"nome\": \"Edson Arantes do Nascimento\",\r\n        \"cpf\": \"00011122210\",\r\n        \"matricula\": 10,\r\n        \"dataNascimento\": \"1940-03-21\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/pessoa/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"pessoa",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/pessoa/todas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"pessoa",
+								"todas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/pessoa/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"pessoa",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vacinacao",
+			"item": [
+				{
+					"name": "Inserir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idPessoa\": 1,\r\n  \"vacina\": {\r\n    \"nome\": \"Vacina Z\",\r\n    \"paisOrigem\": \"Brasil\",\r\n    \"estagio\": 1,\r\n    \"dataInicioPesquisa\": \"2022-10-10\",\r\n    \"pesquisadorResponsavel\": {\r\n      \"id\": 1\r\n    }\r\n  },\r\n  \"dataAplicacao\": \"2024-03-20\",\r\n  \"avaliacao\": 5\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/vacinacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"vacinacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/vacinacao/todas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"vacinacao",
+								"todas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar por Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/vacinacao/pessoa/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"vacinacao",
+								"pessoa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pais",
+			"item": [
+				{
+					"name": "Inserir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Tajiquistão\",\r\n    \"sigla\": \"TQ\"   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/RevisaoP1/rest/pais",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"RevisaoP1",
+								"rest",
+								"pais"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
